@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateWishlistActivity extends AppCompatActivity {
 
+    //Referred to geeksforgeeks to get this code.
+    //https://www.geeksforgeeks.org/how-to-update-data-to-sqlite-database-in-android/
+    //https://www.geeksforgeeks.org/how-to-delete-data-in-sqlite-database-in-android/
+
     // variables for our edit text, button, strings and dbhandler class.
     private EditText productNameEdt, brandNameEdt, priceEdt;
     private Button updateItemBtn, deleteItemBtn;
@@ -51,7 +55,7 @@ public class UpdateWishlistActivity extends AppCompatActivity {
 
                 // inside this method we are calling an update course
                 // method and passing all our edit text values.
-                //dbHandler.updateItem(productName, productNameEdt.getText().toString(), brandNameEdt.getText().toString(), priceEdt.getText().toString());
+                dbHandler.updateItem(productName, productNameEdt.getText().toString(), brandNameEdt.getText().toString(), priceEdt.getText().toString());
 
                 // displaying a toast message that our course has been updated.
                 Toast.makeText(UpdateWishlistActivity.this, "Wishlist Item Updated.", Toast.LENGTH_SHORT).show();
@@ -73,6 +77,9 @@ public class UpdateWishlistActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        //I cannot get the update and delete function to work currently, it works for the code we did in week three, but I guess
+        //changing the variables around completely breaks it.
 
     }
 }

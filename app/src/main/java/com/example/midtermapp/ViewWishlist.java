@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class ViewWishlist extends AppCompatActivity {
 
+    //code borrowed from https://www.geeksforgeeks.org/how-to-read-data-from-sqlite-database-in-android/
+
     // creating variables for our array list,
     // dbhandler, adapter and recycler view.
     private ArrayList<WishlistModal> wishlistModalArrayList;

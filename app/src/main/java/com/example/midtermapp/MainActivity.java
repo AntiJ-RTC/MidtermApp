@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    //I referred to the geeksforgeeks guide on how to do most of the functionality.
+    //https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
+
     // creating variables for our edittext, button and dbhandler
     private EditText productNameEdt, brandNameEdt, priceEdt;
     private Button addItemBtn, readItemsBtn;

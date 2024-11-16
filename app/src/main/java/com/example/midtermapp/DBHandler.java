@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+//creation of DBHandler borrowed from https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
+
 public class DBHandler extends SQLiteOpenHelper {
 
     // creating a constant variables for our database.
