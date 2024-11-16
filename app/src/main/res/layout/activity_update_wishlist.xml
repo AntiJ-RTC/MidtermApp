@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".UpdateWishlistActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textSize="10pt"
-        android:text="Add to wishlist"/>
+        android:text="Update Wishlist Item"/>
 
     <!--Edit text to enter Product name-->
     <EditText
-        android:id="@+id/txtProdName"
+        android:id="@+id/edtProdName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -24,7 +24,7 @@
 
     <!--edit text to enter Brand Name -->
     <EditText
-        android:id="@+id/txtBrandName"
+        android:id="@+id/edtBrandName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -32,29 +32,30 @@
 
     <!--edit text to enter price-->
     <EditText
-        android:id="@+id/txtPrice"
+        android:id="@+id/edtPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="Price (in USD)" />
 
-    <!--button for adding to wishlist-->
+    <!--button for updating wishlist item-->
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Add To Wishlist"
+        android:text="Update Item"
         android:textAllCaps="false" />
 
-    <!--new button for opening our wishlist activity-->
+    <!--button for deleting our item-->
     <Button
-        android:id="@+id/btnRead"
+        android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Read Wishlist"
+        android:text="Delete Item"
         android:textAllCaps="false" />
+
 
 
 </LinearLayout>

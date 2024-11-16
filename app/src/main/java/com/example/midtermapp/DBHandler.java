@@ -2,8 +2,11 @@ package com.example.midtermapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -76,6 +79,72 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // at last we are closing our
         // database after adding database.
+        db.close();
+    }
+
+    // we have created a new method for reading all the courses.
+    public ArrayList<WishlistModal> readWishlist()
+    {
+        // on below line we are creating a
+        // database for reading our database.
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // on below line we are creating a cursor with query to
+        // read data from database.
+        Cursor cursorWishlist
+                = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // on below line we are creating a new array list.
+        ArrayList<WishlistModal> wishlistModalArrayList
+                = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorWishlist.moveToFirst()) {
+            do {
+                // on below line we are adding the data from
+                // cursor to our array list.
+                wishlistModalArrayList.add(new WishlistModal(
+                        cursorWishlist.getString(1),
+                        cursorWishlist.getString(2),
+                        cursorWishlist.getString(3)));
+            } while (cursorWishlist.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorWishlist.close();
+        return wishlistModalArrayList;
+    }
+
+    // below is the method for updating our courses
+    public void updateItem(String originalProductName, String productName, String brandName, String price) {
+
+        // calling a method to get writable database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values
+        // along with its key and value pair.
+        values.put(PRODUCT_COL, productName);
+        values.put(BRAND_COL, brandName);
+        values.put(PRICE_COL, price);
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our course which is stored in original name variable.
+        db.update(TABLE_NAME, values, "name=?", new String[]{originalProductName});
+        db.close();
+    }
+
+    // below is the method for deleting our course.
+    public void deleteItem(String productName) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete our
+        // course and we are comparing it with our course name.
+        db.delete(TABLE_NAME, "name=?", new String[]{productName});
         db.close();
     }
 

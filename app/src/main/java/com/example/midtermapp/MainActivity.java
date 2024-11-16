@@ -1,5 +1,6 @@
 package com.example.midtermapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     // creating variables for our edittext, button and dbhandler
     private EditText productNameEdt, brandNameEdt, priceEdt;
-    private Button addItemBtn;
+    private Button addItemBtn, readItemsBtn;
     private DBHandler dbHandler;
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         brandNameEdt = findViewById(R.id.txtBrandName);
         priceEdt = findViewById(R.id.txtPrice);
         addItemBtn = findViewById(R.id.btnAdd);
+        readItemsBtn = findViewById(R.id.btnRead);
 
         // creating a new dbhandler class
         // and passing our context to it.
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 String price = priceEdt.getText().toString();
 
                 // validating if the text fields are empty or not.
-                if (productName.isEmpty() && brandName.isEmpty() && price.isEmpty()) {
+                if (productName.isEmpty() || brandName.isEmpty() || price.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Please enter all the data.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -57,5 +59,15 @@ public class MainActivity extends AppCompatActivity {
                 priceEdt.setText("");
             }
         });
+
+        readItemsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // opening a new activity via a intent.
+                Intent i = new Intent(MainActivity.this, ViewWishlist.class);
+                startActivity(i);
+            }
+        });
+
     }
 }
